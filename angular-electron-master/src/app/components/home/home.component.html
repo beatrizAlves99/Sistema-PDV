@@ -1,0 +1,46 @@
+<div class="container">
+  <header>
+    <strong><span>IFRN</span>PDV</strong>
+    <nav>
+      <ul>
+        <li>
+          <img
+            src="../../../assets/btn-min.svg"
+            id="min"
+            (click)="minimizeWindow()"
+          />
+        </li>
+
+        <li>
+          <img
+            src="../../../assets/btn-close.svg"
+            id="close"
+            (click)="closeWindow()"
+          />
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <input
+    type="text"
+    placeholder="Username"
+    value="123"
+    (keyup.enter)="channel($event.target.value)"
+  />
+  <main>
+    <ng-container *ngFor="let channel of channelInfo.items">
+      <figure>
+        <img [src]="channel.snippet.thumbnails.default.url" />
+        <figcaption>
+          {{ channel.snippet.title }}
+        </figcaption>
+      </figure>
+
+      <div class="stats">
+        <strong>{{ channel.statistics.subscribeCount | number }}</strong>
+        <span>Subscribers</span>
+      </div>
+    </ng-container>
+  </main>
+</div>
